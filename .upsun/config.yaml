@@ -4,9 +4,9 @@ applications:
   drupal:
     type: php:8.1
 
-    dependencies:
-      python3:
-        uv: '*'
+    #dependencies:
+    #  python3:
+    #    uv: '*'
     #variables:
     #  env:
         # Update for your desired Python version.
@@ -83,6 +83,7 @@ applications:
 
         #python -m pip install weasyprint
         #pip3 install --user pillow weasyprint
+        curl -LsSf https://astral.sh/uv/install.sh | sh
         uv tool install --python 3.11 weasyprint
 
       deploy: |
