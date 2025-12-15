@@ -11,3 +11,4 @@ if [ -n "$PLATFORM_APP_DIR" -a -f "$PLATFORM_APP_DIR"/composer.json ] ; then
 fi
 
 #export PATH=/app/.pyenv/bin:/app/.pyenv/shims:$PATH
+alias python=/app/.local/bin/python3.11
