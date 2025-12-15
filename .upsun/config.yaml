@@ -4,6 +4,10 @@ applications:
   drupal:
     type: php:8.1
 
+    dependencies:
+      python3:
+        weasyprint: '*'
+
     build:
       flavor: none
 
@@ -35,7 +39,7 @@ applications:
         if [ ! -f web/sites/default/settings.upsun.php ]; then
           curl -sfSL https://raw.githubusercontent.com/upsun/config-assets/refs/heads/main/drupal/11/settings.upsun.php > web/sites/default/settings.upsun.php
         fi
-        pip3 install --user pillow weasyprint
+        #pip3 install --user pillow weasyprint
 
       deploy: |
         set -ex
