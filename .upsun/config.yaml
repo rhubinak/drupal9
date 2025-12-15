@@ -84,6 +84,7 @@ applications:
         #python -m pip install weasyprint
         #pip3 install --user pillow weasyprint
         curl -LsSf https://astral.sh/uv/install.sh | sh
+        /app/.local/bin/uv python install 3.11
         /app/.local/bin/uv tool install --python 3.11 weasyprint
 
       deploy: |
