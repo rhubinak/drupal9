@@ -10,4 +10,4 @@ if [ -n "$PLATFORM_APP_DIR" -a -f "$PLATFORM_APP_DIR"/composer.json ] ; then
   export PATH="${PLATFORM_APP_DIR}/${bin:-vendor/bin}:${PATH}"
 fi
 
-export PATH=/app/.pyenv/bin:/app/.pyenv/shims:$PATH
+#export PATH=/app/.pyenv/bin:/app/.pyenv/shims:$PATH

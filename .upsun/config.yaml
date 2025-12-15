@@ -4,13 +4,13 @@ applications:
   drupal:
     type: php:8.1
 
-    #dependencies:
-    #  python3:
-    #    weasyprint: '*'
-    variables:
-      env:
+    dependencies:
+      python3:
+        uv: '*'
+    #variables:
+    #  env:
         # Update for your desired Python version.
-        PYTHON_VERSION: "3.11.0"
+    #    PYTHON_VERSION: "3.11.0"
 
     build:
       flavor: none
@@ -45,28 +45,28 @@ applications:
         fi
 
         # Clone Pyenv to the build cache if not present
-        if [ ! -d "$PLATFORM_CACHE_DIR/.pyenv" ]; then
-            mkdir -p $PLATFORM_CACHE_DIR/.pyenv
-            git clone https://github.com/pyenv/pyenv.git $PLATFORM_CACHE_DIR/.pyenv
-        fi
+        #if [ ! -d "$PLATFORM_CACHE_DIR/.pyenv" ]; then
+        #    mkdir -p $PLATFORM_CACHE_DIR/.pyenv
+        #    git clone https://github.com/pyenv/pyenv.git $PLATFORM_CACHE_DIR/.pyenv
+        #fi
 
         # Pyenv environment variables
-        export PYENV_ROOT="$PLATFORM_CACHE_DIR/.pyenv"
-        export PATH="$PYENV_ROOT/bin:$PATH"
+        #export PYENV_ROOT="$PLATFORM_CACHE_DIR/.pyenv"
+        #export PATH="$PYENV_ROOT/bin:$PATH"
 
         # Initialize Pyenv
-        if command -v pyenv 1>/dev/null 2>&1; then
-            eval "$(pyenv init --path)"
-        fi
+        #if command -v pyenv 1>/dev/null 2>&1; then
+        #    eval "$(pyenv init --path)"
+        #fi
 
         # Install desired Python version
-        mkdir -p $PLATFORM_CACHE_DIR/.pyenv/versions
-        if [ ! -d "$PLATFORM_CACHE_DIR/.pyenv/versions/$PYTHON_VERSION" ]; then
-            pyenv install $PYTHON_VERSION
-        fi
+        #mkdir -p $PLATFORM_CACHE_DIR/.pyenv/versions
+        #if [ ! -d "$PLATFORM_CACHE_DIR/.pyenv/versions/$PYTHON_VERSION" ]; then
+        #    pyenv install $PYTHON_VERSION
+        #fi
 
         # Set global Python version
-        pyenv global $PYTHON_VERSION
+        #pyenv global $PYTHON_VERSION
 
 
         # Copy Pyenv directory to runtime directory
@@ -76,13 +76,14 @@ applications:
         #PYENV_ROOT="$PLATFORM_APP_DIR/.pyenv" $PLATFORM_APP_DIR/.pyenv/bin/pyenv rehash
 
         # Copy Pyenv directory to runtime directory
-        cp -R $PLATFORM_CACHE_DIR/.pyenv $PLATFORM_APP_DIR
+        #cp -R $PLATFORM_CACHE_DIR/.pyenv $PLATFORM_APP_DIR
 
         # Rehash Pyenv for new (runtime) location
-        PYENV_ROOT="$PLATFORM_APP_DIR/.pyenv" $PLATFORM_APP_DIR/.pyenv/bin/pyenv rehash
+        #PYENV_ROOT="$PLATFORM_APP_DIR/.pyenv" $PLATFORM_APP_DIR/.pyenv/bin/pyenv rehash
 
-        python -m pip install weasyprint
+        #python -m pip install weasyprint
         #pip3 install --user pillow weasyprint
+        uv tool install --python 3.11 weasyprint
 
       deploy: |
         set -ex
