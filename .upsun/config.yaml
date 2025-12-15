@@ -35,8 +35,7 @@ applications:
         if [ ! -f web/sites/default/settings.upsun.php ]; then
           curl -sfSL https://raw.githubusercontent.com/upsun/config-assets/refs/heads/main/drupal/11/settings.upsun.php > web/sites/default/settings.upsun.php
         fi
-        #pip3 install --user weasyprint
-        pip install --user weasyprint
+        pip3 install --user pillow weasyprint
 
       deploy: |
         set -ex
